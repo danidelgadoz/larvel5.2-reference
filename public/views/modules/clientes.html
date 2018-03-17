@@ -1,0 +1,136 @@
+ <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Clientes
+            <!-- <small>Optional description</small> -->
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Administracion</a></li>
+            <li class="active">Clientes</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content" data-ng-init="init()">
+
+          <div class="row">
+            <div class="col-md-12" style="background: white;">
+              <div class="table-responsive" style="padding-top: 10px;">
+                <table class="table table-striped table-bordered table-condensed">
+                  <thead class="green-600">
+                    <tr>
+                      <th style="width: 20px;" class="text-center">Nro</th>
+                      <th class="text-center">codigo</th>
+                      <th class="text-center">nombres</th>
+                      <th class="text-center">apellidos</th>
+                      <th class="text-center">documento</th>
+                      <th class="text-center">numero_documento</th>
+                      <th class="text-center">email</th>
+                      <th class="text-center" colspan="3" style="width: 15%;">Accion</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-repeat="x in clientes">
+                      <td class="text-left" ng-bind="($index + 1)"></td>
+                      <td class="text-center" ng-bind="x.codigo"></td>
+                      <td class="text-left" ng-bind="x.nombres"></td>
+                      <td class="text-left" ng-bind="x.apellidos"></td>
+                      <td class="text-left" ng-bind="x.documento"></td>
+                      <td class="text-center" ng-bind="x.numero_documento"></td>
+                      <td class="text-left" ng-bind="x.email"></td>
+                      <td style="width: 5%;"><button class="btn btn-block btn-primary btn-xs" ng-click="">Ver</button></td>
+                      <td style="width: 5%;"><button class="btn btn-block btn-warning btn-xs" ng-click="">Editar</button></td>
+                      <td style="width: 5%;"><button class="btn btn-block btn-danger btn-xs" ng-click="DeleteCliente(x.ID_CLIENTE)">Eliminar</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>                
+            </div>
+            <div class="col-md-12">
+              <button class="btn btn-danger" data-toggle="modal" data-target="#ModalNuevoCliente">Nuevo Cliente</button>
+            </div>
+          </div>
+
+          <!-- Modal Ampliar cotizacion -->
+          <div class="modal fade" id="ModalNuevoCliente" role="dialog">
+            <div class="modal-dialog modal-lg">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header green-600">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Registro de Clientes</h4>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                      <label for="inputNombre" class="col-sm-2 control-label">Nombre</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" ng-model="nuevo_cliente.nombre">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputRazonSocial" class="col-sm-2 control-label">Razon Social</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputRazonSocial" placeholder="Razon Social" ng-model="nuevo_cliente.razon_social">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputRuc" class="col-sm-2 control-label">RUC</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputRuc" placeholder="RUC" ng-model="nuevo_cliente.ruc">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputRubro" class="col-sm-2 control-label">Rubro</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputRubro" placeholder="Rubro" ng-model="nuevo_cliente.rubro">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputDireccion" class="col-sm-2 control-label">Direccion</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputDireccion" placeholder="Direccion" ng-model="nuevo_cliente.direccion">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="nuevo_cliente.email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputTelefono1" class="col-sm-2 control-label">Telefono 1</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputTelefono1" placeholder="Telefono 1" ng-model="nuevo_cliente.telefono1">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputTelefono2" class="col-sm-2 control-label">Telefono 2</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputTelefono2" placeholder="Telefono 2" ng-model="nuevo_cliente.telefono2">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputWebSite" class="col-sm-2 control-label">Pagina Web</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputWebSite" placeholder="Pagina Web" ng-model="nuevo_cliente.pagina_web">
+                      </div>
+                    </div>                    
+                    <div class="form-group">
+                      <label for="inputObservacion" class="col-sm-2 control-label">Observacion</label>
+                      <div class="col-sm-10">
+                        <textarea class="form-control" rows="5" id="inputObservacion" placeholder="Observacion" ng-model="nuevo_cliente.observacion"></textarea>
+                      </div>
+                    </div>                        
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="SaveCliente()">Registrar Cliente</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+
+        </section><!-- /.content -->
